@@ -1,0 +1,158 @@
+.problem-section {
+    padding: 6rem 1.25rem;
+    background-color: var(--color-bg);
+
+    h2 {
+        text-align: center;
+        margin-bottom: 4rem;
+        span {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-family: "Gilroy-Regular", sans-serif;
+        }
+    }
+
+    .problem-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        max-width: 85rem;
+        margin: 0 auto;
+
+        .connector {
+            color: #fa3a3b;
+            opacity: 0.3;
+            transform: rotate(90deg); // Mobile: Down
+        }
+
+        .problem-card {
+            background: var(--color-card);
+            border-radius: 1.25rem;
+            width: 100%;
+            max-width: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: translateY(-5px);
+                border-color: rgba(250, 58, 59, 0.2);
+            }
+
+            .visual-box {
+                height: 200px;
+                background: #080808;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+
+                /* Browser Mockup for Card 1 */
+                .browser-mock {
+                    width: 70%;
+                    height: 100px;
+                    background: #111;
+                    border-radius: 8px;
+                    border: 1px solid #222;
+                    padding: 10px;
+                    text-align: center;
+                    .dots {
+                        display: flex;
+                        gap: 5px;
+                        margin-bottom: 10px;
+                        span {
+                            width: 6px;
+                            height: 6px;
+                            background: #333;
+                            border-radius: 50%;
+                        }
+                    }
+                    .error-text {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        color: #fa3a3b;
+                    }
+                    p {
+                        font-size: 0.7rem;
+                        color: #555;
+                        text-transform: uppercase;
+                        margin: 0;
+                    }
+                }
+
+                .alert-icon {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                }
+
+                /* Chart for Card 2 */
+                .chart-mock {
+                    width: 80%;
+                    position: relative;
+                    .descending-chart {
+                        filter: drop-shadow(0 0 10px rgba(250, 58, 59, 0.4));
+                    }
+                    .loss-tag {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        color: #fa3a3b;
+                        font-weight: bold;
+                        font-family: monospace;
+                    }
+                }
+
+                /* Churn bars for Card 3 */
+                .user-churn {
+                    display: flex;
+                    align-items: flex-end;
+                    gap: 10px;
+                    height: 60px;
+                    .churn-bar {
+                        width: 20px;
+                        background: #222;
+                        border-radius: 4px;
+                        transition: 1s ease;
+                    }
+                }
+                .status-label {
+                    position: absolute;
+                    bottom: 20px;
+                    font-size: 0.7rem;
+                    color: #fa3a3b;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                }
+            }
+
+            .content {
+                padding: 2rem;
+                h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.75rem;
+                    color: var(--color-text);
+                }
+                p {
+                    font-size: 1rem;
+                    color: var(--color-text-secondary);
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .problem-section .problem-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .connector {
+            transform: rotate(0deg);
+            opacity: 0.5;
+        }
+    }
+}

@@ -1,0 +1,217 @@
+/* ==========================================================================
+   CONTACT / CTA SECTION
+   ========================================================================== */
+
+.contact {
+    width: 100%;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+
+    // Section Heading
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        span {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-family: "Gilroy-Regular", "Outfit", sans-serif;
+        }
+    }
+
+    // The Main CTA Card
+    .call {
+        width: 90%;
+        max-width: 80rem;
+        background-color: var(--color-card);
+        margin: 0 auto;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column-reverse; // Mobile: Image on top, text below
+        align-items: stretch;
+        justify-content: center;
+        box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
+        overflow: hidden; // Keeps image inside border radius
+
+        .left {
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 1.25rem;
+            z-index: 2;
+
+            .call-text {
+                font-size: 2.25rem;
+                font-weight: 700;
+                font-family:
+                    "Gilroy-Light", "Outfit", "Poppins", Arial, Helvetica,
+                    sans-serif;
+                color: var(--color-text);
+                margin: 0;
+                line-height: 1.1;
+            }
+
+            p {
+                font-size: 1.125rem;
+                max-width: 33rem;
+                color: var(--color-text-secondary);
+                font-weight: 500;
+                letter-spacing: -0.3px;
+                line-height: 150%;
+                text-align: left;
+                margin: 0;
+            }
+
+            button {
+                padding: 0.85rem 1.5rem;
+                font-size: 1.25rem;
+                width: 100%; // Mobile: Full width button
+                border-radius: 50px;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+                font-family:
+                    "Gilroy-Regular", "Outfit", Arial, Helvetica, sans-serif;
+                background-color: #fa3a3b;
+                color: white;
+
+                // Your exact shadow styles
+                box-shadow:
+                    rgba(255, 60, 60, 0.3) 0px 0px 72px 0px,
+                    rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset,
+                    rgba(255, 60, 60, 0.12) 0px 0px 0px 6px;
+
+                transition:
+                    transform 0.2s ease,
+                    background-color 0.2s ease;
+                -webkit-tap-highlight-color: transparent;
+
+                &:hover {
+                    background-color: #ff3d3d;
+                }
+
+                &:active {
+                    transform: scale(0.96);
+                }
+            }
+        }
+
+        .right {
+            height: 300px; // Mobile image height
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+
+                // Mobile Mask: Fades out at the bottom to blend with text
+                -webkit-mask-image: linear-gradient(
+                    to bottom,
+                    black 70%,
+                    transparent 100%
+                );
+                mask-image: linear-gradient(
+                    to bottom,
+                    black 70%,
+                    transparent 100%
+                );
+            }
+        }
+    }
+}
+
+/* DESKTOP STYLES (786px and up) */
+@media screen and (min-width: 786px) {
+    .contact {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 0;
+
+        /* h2 {
+            padding: 1rem 2.5rem;
+            margin-bottom: 2rem;
+
+            span {
+                font-size: 3.75rem;
+            }
+        } */
+
+        .call {
+            flex-direction: row; // Side-by-side layout
+            width: 90%;
+            height: auto;
+            min-height: 500px; // Ensures card is tall enough
+            align-items: stretch; // Forces left and right to same height
+
+            .left {
+                width: 60%;
+                padding: 4rem;
+                gap: 1.5rem;
+
+                .call-text {
+                    font-size: 3.5rem;
+                    font-weight: 600;
+                }
+
+                p {
+                    font-size: 1.25rem;
+                }
+
+                button {
+                    max-width: 250px; // Desktop: Fixed width button
+                }
+            }
+
+            .right {
+                width: 40%;
+                height: auto; // Stretches to match left box height
+
+                img {
+                    // Fix: Ensure image fills the whole container with no black spaces
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    // Desktop Mask: Fades to the left to blend into the text area
+                    -webkit-mask-image: linear-gradient(
+                        to left,
+                        black 75%,
+                        transparent 100%
+                    );
+                    mask-image: linear-gradient(
+                        to left,
+                        black 75%,
+                        transparent 100%
+                    );
+                }
+            }
+        }
+    }
+}
+
+/* LARGE DESKTOP (1200px and up) */
+@media screen and (min-width: 1200px) {
+    .contact {
+        .call {
+            width: 80%;
+
+            .left {
+                padding: 5rem;
+
+                .call-text {
+                    font-size: 3.75rem;
+                }
+            }
+        }
+    }
+}

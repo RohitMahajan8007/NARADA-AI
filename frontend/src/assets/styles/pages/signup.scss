@@ -1,0 +1,492 @@
+.narada-signup-root {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow: hidden;
+
+    section {
+        flex: 1; // Perfect 50/50 Split
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    // --- FORM SIDE ---
+    .side-form {
+        padding: 60px;
+        background: var(--color-bg);
+        z-index: 5;
+
+        .content-limit {
+            width: 100%;
+            max-width: 400px;
+
+            .brand-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-decoration: none;
+                color: white;
+                font-weight: 900;
+                font-size: 1.6rem;
+                margin-bottom: 40px;
+                .brand-logo {
+                    color: var(--color-accent);
+                }
+                .red-text {
+                    color: var(--color-accent);
+                }
+            }
+
+            .text-group {
+                margin-bottom: 30px;
+                h1 {
+                    font-size: 2.4rem;
+                    font-weight: 800;
+                    letter-spacing: -1.5px;
+                    margin-bottom: 8px;
+                }
+                p {
+                    color: var(--color-text-secondary);
+                    line-height: 1.6;
+                }
+            }
+
+            .alert-error {
+                background: rgba(250, 58, 59, 0.1);
+                border: 1px solid var(--color-accent-secondary);
+                color: var(--color-accent);
+                padding: 14px;
+                border-radius: 12px;
+                font-size: 0.85rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 24px;
+            }
+
+            .input-field {
+                margin-bottom: 20px;
+                label {
+                    display: block;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    color: #555;
+                    margin-bottom: 8px;
+                    font-weight: 800;
+                }
+
+                .input-control {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+
+                    .field-icon {
+                        position: absolute;
+                        left: 16px;
+                        color: #444;
+                        z-index: 2;
+                        pointer-events: none;
+                    }
+
+                    input {
+                        width: 100%;
+                        background: var(--color-bg-secondary);
+                        border: 1px solid var(--color-border);
+                        // PADDING ON BOTH SIDES TO FIX ICON JUMPING
+                        padding: 16px 48px 16px 48px;
+                        border-radius: 14px;
+                        color: white;
+                        font-size: 1rem;
+                        transition: all 0.25s ease;
+                        z-index: 1;
+
+                        &:focus {
+                            outline: none;
+                            border-color: var(--color-accent);
+                            background: var(--color-hover-bg);
+                            box-shadow: 0 0 0 4px var(--color-accent-secondary);
+                        }
+                    }
+
+                    .eye-toggle,
+                    .match-status {
+                        position: absolute;
+                        right: 4px; // Anchored to inside edge
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: transparent;
+                        border: none;
+                        color: #444;
+                        cursor: pointer;
+                        width: 44px;
+                        height: 44px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 2;
+                        transition: color 0.2s;
+
+                        &:hover {
+                            color: white;
+                        }
+                        svg {
+                            position: static !important;
+                        } // Fix for absolute svg conflict
+                    }
+                }
+
+                .password-strength {
+                    margin-top: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    .strength-bar-bg {
+                        flex: 1;
+                        height: 3px;
+                        background: #111;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        .strength-fill {
+                            height: 100%;
+                            transition: 0.5s ease;
+                        }
+                    }
+                    span {
+                        font-size: 0.7rem;
+                        color: #444;
+                        font-weight: 700;
+                        width: 45px;
+                        text-align: right;
+                    }
+                }
+            }
+
+            .submit-action-btn {
+                width: 100%;
+                background: var(--color-accent);
+                color: white;
+                padding: 18px;
+                border: none;
+                border-radius: 14px;
+                font-weight: 800;
+                font-size: 1rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                transition: 0.3s;
+                margin-top: 10px;
+
+                &:hover {
+                    opacity: 0.9;
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 20px -10px var(--color-accent);
+                }
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                .spinner {
+                    width: 20px;
+                    height: 20px;
+                    border: 3px solid rgba(255, 255, 255, 0.2);
+                    border-top-color: white;
+                    border-radius: 50%;
+                    animation: rotate 0.8s linear infinite;
+                }
+            }
+
+            .auth-redirect {
+                text-align: center;
+                margin-top: 30px;
+                color: var(--color-text-secondary);
+                font-size: 0.9rem;
+                a {
+                    color: white;
+                    font-weight: 700;
+                    text-decoration: none;
+                    &:hover {
+                        color: var(--color-accent);
+                    }
+                }
+            }
+        }
+    }
+
+    // --- VISUAL SIDE ---
+    .side-visual {
+        background: #000;
+        overflow: hidden;
+        border-left: 1px solid var(--color-border);
+
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--color-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(
+                circle at center,
+                black,
+                transparent 80%
+            );
+            opacity: 0.3;
+        }
+
+        .glow-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: var(--color-accent);
+            filter: blur(150px);
+            opacity: 0.1;
+        }
+
+        .visual-core {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+
+            .node-center {
+                position: relative;
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .pulse-ring {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border: 2px solid var(--color-accent);
+                    border-radius: 50%;
+                }
+                .core-icon {
+                    background: #0a0a0a;
+                    border: 1px solid var(--color-border);
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 0 40px var(--color-accent-secondary);
+                }
+            }
+
+            .floating-data {
+                .f-tag {
+                    position: absolute;
+                    background: rgba(15, 15, 15, 0.8);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid var(--color-border);
+                    padding: 12px 20px;
+                    border-radius: 100px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    white-space: nowrap;
+
+                    &.tag-1 {
+                        top: -20px;
+                        right: -120px;
+                    }
+                    &.tag-2 {
+                        top: 100px;
+                        left: -140px;
+                    }
+                    &.tag-3 {
+                        bottom: -80px;
+                        right: -40px;
+                    }
+                }
+            }
+
+            .visual-text {
+                h2 {
+                    font-size: 3rem;
+                    line-height: 1.1;
+                    font-weight: 900;
+                    margin-bottom: 20px;
+                    span {
+                        color: var(--color-accent);
+                    }
+                }
+                p {
+                    color: var(--color-text-secondary);
+                    max-width: 400px;
+                    margin: 0 auto;
+                    line-height: 1.6;
+                }
+            }
+        }
+    }
+}
+
+// --- OTP MODAL ---
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px); // Heavy blur for premium feel
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    perspective: 1000px;
+
+    .modal-card {
+        background: #0a0a0a;
+        border: 1px solid var(--color-border);
+        padding: 60px 40px;
+        border-radius: 32px;
+        text-align: center;
+        width: 90%;
+        max-width: 440px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+        // Subtle internal glow
+        .modal-glow {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: var(--color-accent);
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .modal-header-icon {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg-secondary);
+            border-radius: 20px;
+            border: 1px solid var(--color-border);
+
+            .icon-pulse {
+                position: absolute;
+                inset: 0;
+                border: 2px solid var(--color-accent);
+                border-radius: 20px;
+                opacity: 0.3;
+            }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            span {
+                color: white;
+                font-weight: 600;
+            }
+        }
+
+        .otp-input-area {
+            margin-bottom: 32px;
+
+            input {
+                width: 100%;
+                background: #000;
+                border: 1px solid var(--color-border);
+                padding: 20px;
+                font-size: 2.8rem;
+                text-align: center;
+                color: var(--color-accent);
+                border-radius: 20px;
+                letter-spacing: 0.8rem;
+                font-family:
+                    "JetBrains Mono", monospace; // Crucial for security feel
+                font-weight: 900;
+                transition: all 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--color-accent);
+                    box-shadow: 0 0 20px var(--color-accent-secondary);
+                }
+
+                &::placeholder {
+                    color: #1a1a1a;
+                }
+            }
+
+            .input-guide {
+                font-size: 0.7rem;
+                color: #444;
+                text-transform: uppercase;
+                margin-top: 12px;
+                letter-spacing: 1px;
+                font-weight: 700;
+            }
+        }
+
+        .cancel-btn {
+            background: none;
+            border: none;
+            color: #444;
+            font-size: 0.85rem;
+            margin-top: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: color 0.2s;
+
+            &:hover {
+                color: #888;
+            }
+        }
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// --- RESPONSIVE ---
+@media (max-width: 1024px) {
+    .narada-signup-root {
+        flex-direction: column;
+        .side-visual {
+            display: none;
+        } // Hide visuals on small screens
+        .side-form {
+            flex: 1;
+            padding: 60px 24px;
+        }
+    }
+}

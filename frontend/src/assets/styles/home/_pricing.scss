@@ -1,0 +1,233 @@
+.pricing {
+    width: 100%;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin-bottom: 0rem;
+    padding-bottom: 2rem; // Added consistent padding instead of margin
+
+    h2 {
+        text-align: center;
+        margin-top: 0rem;
+        margin-bottom: 3rem; // Increased slightly for breathing room
+        span {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-family: "Gilroy-Regular", sans-serif;
+        }
+    }
+
+    .bentogrid {
+        width: 100%;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 1.25rem; // Removed 1rem top padding to reduce space
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .bento {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            grid-template-areas: "box1" "box2" "box3";
+            gap: 1.5rem; // Increased gap for mobile cards
+
+            .box1,
+            .box2,
+            .box3 {
+                background-color: var(--color-card);
+                min-height: 22rem;
+                height: auto;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 1rem;
+                border: 1px solid rgba(255, 255, 255, 0.05); // Added subtle border
+
+                .top {
+                    height: auto;
+                    width: 100%;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    border-radius: 0.5rem;
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                    padding: 1.5rem 1rem; // Increased top/bottom padding slightly
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 0.5rem;
+
+                    .label {
+                        display: inline-flex;
+                        width: fit-content;
+                        align-items: center;
+                        padding: 0.5rem 1rem;
+                        background-color: var(--color-bg-secondary);
+                        border-radius: 9999px;
+                        font-size: 0.875rem;
+                        color: #fafafa;
+                        font-weight: bold;
+
+                        .status-dot {
+                            position: relative;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .ping {
+                                position: absolute;
+                                inset: 0;
+                                background-color: #00ff84;
+                                border-radius: 50%;
+                                animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1)
+                                    infinite;
+                            }
+
+                            .dot {
+                                position: relative;
+                                width: 0.625rem;
+                                height: 0.625rem;
+                                background-color: #00ff84;
+                                border-radius: 50%;
+                            }
+                        }
+                        .label-text {
+                            margin-left: 0.5rem;
+                        }
+                    }
+
+                    h3 {
+                        font-size: 2.25rem;
+                        font-family: "Gilroy-Regular", sans-serif;
+                        font-weight: 600;
+                        color: var(--color-text);
+                        margin-bottom: 0.75rem;
+                    }
+
+                    p {
+                        font-size: 1.125rem;
+                        color: var(--color-text);
+                        backdrop-filter: blur(4px);
+                        padding: 0.25rem 0.5rem;
+                        border-radius: 0.5rem;
+                        text-align: center;
+                    }
+
+                    span.pricing {
+                        all: unset;
+                        font-size: 2rem;
+                        color: var(--color-text);
+                        font-weight: bold;
+                        .desc {
+                            font-size: 1.125rem;
+                            font-weight: bold;
+                        }
+                    }
+
+                    button {
+                        margin-top: 1rem;
+                        padding: 0.75rem 1rem;
+                        font-size: 1.25rem;
+                        width: 100%;
+                        border-radius: 50px;
+                        border: none;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition:
+                            transform 0.2s ease-in,
+                            background-color 0.2s;
+                        font-family: "Gilroy-Regular", sans-serif;
+                        background-color: #fa3a3b;
+                        color: white;
+                        box-shadow:
+                            rgba(255, 60, 60, 0.3) 0px 0px 72px 0px,
+                            rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset,
+                            rgba(255, 60, 60, 0.12) 0px 0px 0px 6px;
+
+                        &:hover {
+                            background-color: #ff4d4d;
+                        }
+
+                        &:active {
+                            transform: scale(0.95);
+                        }
+                    }
+                }
+
+                .bottom {
+                    height: auto; // Changed from 60% to auto to remove space
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                    padding: 1rem 0;
+
+                    p {
+                        font-size: 1rem;
+                        color: var(--color-text-secondary);
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 0.75rem;
+                        svg {
+                            height: 1.25rem;
+                            width: 1.25rem;
+                            color: #fff; // Success green for checkmarks
+                            flex-shrink: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes ping {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .pricing {
+        min-height: auto; // REMOVED 100vh - This was the cause of the blank space
+        padding: 6rem 0; // Better spacing for desktop sections
+
+        .bentogrid .bento {
+            padding: 1rem 0rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: "box1 box2 box3";
+            gap: 1.5rem;
+            align-items: stretch; // Makes all cards same height
+
+            .box1,
+            .box2,
+            .box3 {
+                gap: 1.5rem;
+                .top {
+                    h3 {
+                        font-size: 1.75rem;
+                    }
+                    p {
+                        font-size: 1.1rem;
+                        color: var(--color-text);
+                    }
+                    span.pricing {
+                        font-size: 2.25rem;
+                    }
+                }
+            }
+        }
+    }
+}
