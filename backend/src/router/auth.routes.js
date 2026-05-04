@@ -37,8 +37,8 @@ router.get(
       expiresIn: process.env.JWT_EXPIRES_IN || process.env.JWT_EXPIRE || '7d',
     });
 
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
-    res.redirect(`${frontendUrl}/login?token=${token}`);
+    const frontendUrl = "http://localhost:5173/login";
+    res.redirect(`${frontendUrl}?token=${token}`);
   }
 );
 

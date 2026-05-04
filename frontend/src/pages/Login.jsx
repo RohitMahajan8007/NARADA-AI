@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { useAuth } from "../contexts/AuthContext";
@@ -42,42 +42,6 @@ const Login = () => {
   const [modalLoading, setModalLoading] = useState(false);
   const [modalError, setModalError] = useState("");
   const [modalSuccess, setModalSuccess] = useState("");
-
-  // --- EFFECT: Check for Google OAuth Token in URL ---
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const token = params.get("token");
-
-    if (token) {
-      const handleGoogleLogin = async () => {
-        setLoading(true);
-        try {
-          // Verify token and get user data
-          const { default: api } = await import("../api/client");
-          const res = await api.get("/auth/me", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-
-          if (res.success) {
-            localStorage.setItem("wm_token", token);
-            localStorage.setItem("wm_user", JSON.stringify(res.user));
-            navigate("/dashboard");
-          }
-        } catch (err) {
-          setError("Google authentication failed. Please try again.");
-        } finally {
-          setLoading(false);
-        }
-      };
-      handleGoogleLogin();
-    }
-  }, [location, navigate]);
-
-  // --- HANDLER: Google Redirect ---
-  const handleGoogleRedirect = () => {
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3500";
-    window.location.href = `${apiUrl}/api/auth/google`;
-  };
 
   // --- HANDLER: Password Login ---
   const handlePasswordLogin = async (e) => {
@@ -227,38 +191,6 @@ const Login = () => {
             >
               Email OTP
             </button>
-          </div>
-
-          <div className="social-login">
-            <button
-              type="button"
-              className="google-btn"
-              onClick={handleGoogleRedirect}
-            >
-              <svg viewBox="0 0 24 24" width="18" height="18">
-                <path
-                  fill="#EA4335"
-                  d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115Z"
-                />
-                <path
-                  fill="#34A853"
-                  d="M16.04 18.013c-1.09.503-2.303.887-4.04.887a7.077 7.077 0 0 1-6.734-4.856l-4.026 3.115C3.198 21.302 7.27 24 12 24c3.11 0 5.928-1.033 8.127-2.758l-4.087-3.229Z"
-                />
-                <path
-                  fill="#4285F4"
-                  d="M23.832 12.218c0-.796-.076-1.562-.218-2.3H12v4.69h6.605a5.645 5.645 0 0 1-2.454 3.705l4.087 3.229c2.39-2.222 3.775-5.495 3.775-9.324Z"
-                />
-                <path
-                  fill="#FBBC05"
-                  d="M5.266 14.235 1.24 17.35A11.947 11.947 0 0 1 0 12c0-1.92.445-3.733 1.24-5.35l4.026 3.115a7.03 7.03 0 0 0 0 4.47Z"
-                />
-              </svg>
-              Continue with Google
-            </button>
-          </div>
-
-          <div className="divider">
-            <span>or</span>
           </div>
 
           {loginMethod === "password" ? (
