@@ -9,9 +9,6 @@ import { sendEmail } from "../utils/sendEmail.js";
 import { sendTelegramMessage } from "../utils/telegram.util.js";
 import { analyzeDowntime } from "../services/ai.service.js";
 
-/* ─────────────────────────────────────────────
-   SSL Check Helper
-───────────────────────────────────────────── */
 const checkSSL = (url) => {
   return new Promise((resolve) => {
     try {
@@ -36,15 +33,15 @@ const checkSSL = (url) => {
   });
 };
 
-/* ── Domain Expiry Helper (WHOIS) ── */
+
 export const checkDomainExpiry = async (url) => {
   try {
     const domain = new URL(url).hostname.replace(/^www\./, "");
-    // whoisDomain returns an object keyed by WHOIS server
+
     const info = await whoisDomain(domain);
     let expiryDate = null;
 
-    // whoiser returns a nested object depending on the TLD
+   
     for (const key in info) {
       const reg = info[key];
       if (typeof reg !== "object") continue;
@@ -72,13 +69,13 @@ export const checkDomainExpiry = async (url) => {
 
 export const startMonitoring = () => {
 
-  /* ── Every minute: uptime check ── */
+  
   cron.schedule("*/1 * * * *", async () => {
     const allActive = await Monitor.find({ isActive: true });
     const now = new Date();
 
     const monitorsToCheck = allActive.filter(monitor => {
-      if (!monitor.lastChecked) return true; // Never checked before
+      if (!monitor.lastChecked) return true; 
       
       const lastCheckTime = new Date(monitor.lastChecked).getTime();
       const intervalMs = (monitor.interval || 5) * 60 * 1000;
@@ -94,7 +91,6 @@ export const startMonitoring = () => {
     }
   });
 
-  /* ── Every 6 hours: SSL certificate check ── */
   cron.schedule("0 */6 * * *", async () => {
     console.log("Running SSL certificate check...");
     const monitors = await Monitor.find({
@@ -137,7 +133,7 @@ export const startMonitoring = () => {
     }
   });
 
-  /* ── Every 12 hours: Domain Expiry check ── */
+
   cron.schedule("0 */12 * * *", async () => {
     console.log("Running Domain Expiry check...");
     const monitors = await Monitor.find({ isActive: true });
@@ -175,12 +171,11 @@ export const startMonitoring = () => {
     }
   });
 
-  /* ── Daily: SEO audit placeholder ── */
+
   cron.schedule("0 0 * * *", async () => {
     console.log("Running daily SEO audit check...");
   });
 
-  /* ── Weekly (Monday 00:00): PDF Report ── */
   cron.schedule("0 0 * * 1", async () => {
     console.log("Generating Weekly PDF Reports...");
     const { generateWeeklyReport } = await import("../services/report.service.js");
@@ -209,7 +204,7 @@ export const startMonitoring = () => {
   });
 };
 
-/* ── Status change handler (returns aiAnalysis string or null) ── */
+
 const handleStatusChange = async (monitor, status, error) => {
   console.log(`[DEBUG] handleStatusChange called for ${monitor.name}. New status: ${status}`);
   const user = await User.findById(monitor.user);
@@ -257,7 +252,7 @@ const handleStatusChange = async (monitor, status, error) => {
   return aiAnalysis;
 };
 
-/* ── Perform a single check for one monitor ── */
+
 export const performSingleCheck = async (monitor) => {
   const startTime = Date.now();
   let status = "up";
@@ -271,7 +266,7 @@ export const performSingleCheck = async (monitor) => {
       responseTime = Date.now() - startTime;
       statusCode = response.status;
 
-      // Keyword Monitoring Check
+
       if (monitor.keyword && !response.data.includes(monitor.keyword)) {
         status = "down";
         errorMessage = `Keyword "${monitor.keyword}" not found on page`;
@@ -285,7 +280,7 @@ export const performSingleCheck = async (monitor) => {
 
     let aiAnalysis = monitor.lastAiAnalysis || null;
 
-    // ── Maintenance Mode Check ──
+
     const isUnderMaintenance = monitor.isMaintenance || (monitor.maintenanceUntil && new Date(monitor.maintenanceUntil) > new Date());
     
     if (isUnderMaintenance) {
@@ -295,7 +290,7 @@ export const performSingleCheck = async (monitor) => {
       aiAnalysis = await handleStatusChange(monitor, status, errorMessage);
     }
 
-    // ── Escalation Logic (30 mins downtime) ──
+   
     let downSince = monitor.downSince;
     let lastEscalationSent = monitor.lastEscalationSent;
 
@@ -321,7 +316,7 @@ export const performSingleCheck = async (monitor) => {
       lastEscalationSent = null;
     }
 
-    // Simulate Multi-Region Results
+   
     const regions = [
       { 
         name: "US-East (N. Virginia)", 
@@ -340,7 +335,7 @@ export const performSingleCheck = async (monitor) => {
       }
     ];
 
-    // Create Log with regions
+   
     await Log.create({
       monitor: monitor._id,
       status,

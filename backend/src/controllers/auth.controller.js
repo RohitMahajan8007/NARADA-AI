@@ -184,7 +184,7 @@ export const forgotPassword = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const otpExpiry = new Date(Date.now() + 15 * 60 * 1000); // 15 mins
+    const otpExpiry = new Date(Date.now() + 15 * 60 * 1000); 
 
     await User.updateOne({ _id: user._id }, { $set: { otp, otpExpiry } }, { runValidators: false });
     try {
@@ -262,7 +262,7 @@ export const updateProfile = async (req, res) => {
     await User.updateOne({ _id: user._id }, { $set: updateData }, { runValidators: false });
     const updatedUser = await User.findById(req.user.id);
     
-    // Send confirmation message if they just added/changed their telegram ID
+    
     if (isNewTelegramId) {
       try {
         await import("../utils/telegram.util.js").then((m) => m.sendTelegramMessage(

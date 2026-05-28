@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Update with production URL if needed, or use env variable
 export const API_URL = import.meta.env.VITE_API_URL || '';
 
 const apiClient = axios.create({
@@ -24,7 +23,7 @@ apiClient.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('wm_token');
       localStorage.removeItem('wm_user');
-      // Dispatch custom event to let AuthContext know
+     
       window.dispatchEvent(new Event('auth:unauthorized'));
     }
     return Promise.reject(error.response?.data || error);

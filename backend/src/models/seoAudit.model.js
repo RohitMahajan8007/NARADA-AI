@@ -47,7 +47,7 @@ const seoAuditSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Indexing for faster lookups by URL
+
 seoAuditSchema.index({ url: 1 });
 
 const SeoAudit = mongoose.model("SeoAudit", seoAuditSchema);

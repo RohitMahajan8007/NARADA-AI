@@ -5,6 +5,9 @@ import Settings from "../models/settings.model.js";
 import EmailTemplate from "../models/emailTemplate.model.js";
 import Coupon from "../models/coupon.model.js";
 
+
+
+
 export const getStats = async (req, res) => {
   try {
     const userCount = await User.countDocuments();
@@ -21,6 +24,8 @@ export const getStats = async (req, res) => {
   }
 };
 
+
+
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
@@ -29,6 +34,7 @@ export const getUsers = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 export const createUser = async (req, res) => {
   try {
@@ -50,6 +56,8 @@ export const createUser = async (req, res) => {
   }
 };
 
+
+
 export const updateUser = async (req, res) => {
   try {
     const { name, email, password, role, planType } = req.body;
@@ -70,11 +78,12 @@ export const updateUser = async (req, res) => {
   }
 };
 
+
 export const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
-    // Also delete their monitors
+   
     const Monitor = (await import('../models/monitor.model.js')).default;
     const Log = (await import('../models/log.model.js')).default;
     const monitors = await Monitor.find({ user: req.params.id });
@@ -88,8 +97,7 @@ export const deleteUser = async (req, res) => {
 
 export const updateSettings = async (req, res) => {
   try {
-    // The UI sends a flat object with the fields to update
-    // Settings model stores everything in one document
+   
     const updates = req.body;
     delete updates._id;
     delete updates.__v;
@@ -129,7 +137,7 @@ export const getSettings = async (req, res) => {
   }
 };
 
-// Default templates when DB is empty
+
 const DEFAULT_TEMPLATES = [
   { key: 'email_verified', name: 'email_verified', category: 'auth', subject: 'Email Verified ✅', body: '<p>Your email has been verified. Welcome!</p>', description: 'Sent after user clicks the email verification link' },
   { key: 'forgot_password', name: 'forgot_password', category: 'auth', subject: 'Your password reset OTP - {{appName}}', body: '<p>Your OTP is: <strong>{{otp}}</strong>. Valid for 15 minutes.</p>', description: 'Sent when user requests password reset' },
@@ -140,10 +148,11 @@ const DEFAULT_TEMPLATES = [
   { key: 'monitor_up', name: 'monitor_up', category: 'monitoring', subject: '✅ {{monitorName}} is back UP', body: '<p>Your monitor <strong>{{monitorName}}</strong> at {{url}} is back online.</p>', description: 'Sent when a monitor recovers' },
 ];
 
+
 export const getEmailTemplates = async (req, res) => {
   try {
     const dbTemplates = await EmailTemplate.find();
-    // Merge DB overrides with defaults
+   
     const merged = DEFAULT_TEMPLATES.map(def => {
       const override = dbTemplates.find(t => t.name === def.key);
       return {
@@ -159,6 +168,7 @@ export const getEmailTemplates = async (req, res) => {
   }
 };
 
+
 export const getPayments = async (req, res) => {
   try {
     const payments = await Payment.find().populate("user", "name fullname email").sort("-createdAt");
@@ -167,6 +177,8 @@ export const getPayments = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
 
 export const getPendingPayments = async (req, res) => {
   try {
@@ -262,6 +274,7 @@ export const handlePaymentAction = async (req, res) => {
   }
 };
 
+
 export const getCoupons = async (req, res) => {
   try {
     const coupons = await Coupon.find().sort("-createdAt");
@@ -275,7 +288,7 @@ export const createCoupon = async (req, res) => {
   try {
     const { code, discountType, discountValue, type, value, maxUses, validUntil } = req.body;
     
-    // Support both naming conventions from frontend
+    
     const finalDiscountType = discountType || (type === 'percentage' ? 'percentage' : 'fixed');
     const finalDiscountValue = discountValue !== undefined ? Number(discountValue) : Number(value);
 
@@ -301,6 +314,7 @@ export const createCoupon = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 export const updateCoupon = async (req, res) => {
   try {

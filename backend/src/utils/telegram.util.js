@@ -22,7 +22,7 @@ const getBot = async () => {
   }
 };
 
-/* ── Initialize Bot Handlers ── */
+
 export const initBot = async () => {
   const bot = await getBot();
   if (!bot) {
@@ -30,11 +30,11 @@ export const initBot = async () => {
     return;
   }
 
-  // Import models inside handlers to avoid circular dependencies
+ 
   const { default: Monitor } = await import("../models/monitor.model.js");
   const { default: User } = await import("../models/user.model.js");
 
-  // Command: /start
+ 
   bot.command("start", (ctx) => {
     ctx.replyWithHTML(
       `<b>Welcome to WebMonitor!</b>\n\n` +
@@ -46,7 +46,7 @@ export const initBot = async () => {
     );
   });
 
-  // Command: /status
+ 
   bot.command("status", async (ctx) => {
     try {
       const user = await User.findOne({ telegramId: ctx.from.id.toString() });
@@ -61,7 +61,7 @@ export const initBot = async () => {
         response += `${icon} <b>${m.name}</b>\n`;
         response += `Status: ${m.status?.toUpperCase()}\n`;
         response += `URL: ${m.url}\n`;
-        response += `Audit: /audit_${m._id}\n\n`; // Clickable command
+        response += `Audit: /audit_${m._id}\n\n`;
       });
 
       ctx.replyWithHTML(response);
@@ -70,7 +70,6 @@ export const initBot = async () => {
     }
   });
 
-  // Handler for /audit_ID (Direct click from status)
   bot.hears(/^\/audit_(.+)$/, async (ctx) => {
     const monitorId = ctx.match[1];
     const { runAudit } = await import("../controllers/audit.controller.js");
@@ -78,20 +77,20 @@ export const initBot = async () => {
     const { default: User } = await import("../models/user.model.js");
     
     try {
-      // 1. Verify user by Telegram ID
+    
       const user = await User.findOne({ telegramId: ctx.from.id.toString() });
       if (!user) return ctx.reply("Account not linked. Please use /start first.");
 
-      // 2. Verify monitor belongs to user
+      
       const monitor = await Monitor.findOne({ _id: monitorId, user: user._id });
       if (!monitor) return ctx.reply("Monitor not found or access denied.");
 
       ctx.reply(`🚀 Starting Deep Audit for ${monitor.name}... Please wait (~30s)`);
       
-      // 3. Mock req/res with user object to bypass auth check in controller
+     
       const mockReq = { 
-        params: { monitorId: monitorId }, // Controller expects monitorId
-        user: { _id: user._id }           // Controller expects req.user._id
+        params: { monitorId: monitorId }, 
+        user: { _id: user._id }           
       };
       
       const mockRes = {
@@ -123,7 +122,6 @@ export const initBot = async () => {
     }
   });
 
-  // Command: /help
   bot.command("help", (ctx) => {
     ctx.replyWithHTML(
       "<b>Available Commands:</b>\n\n" +
@@ -134,7 +132,7 @@ export const initBot = async () => {
     );
   });
 
-  // Command: /stats
+
   bot.command("stats", async (ctx) => {
     try {
       const user = await User.findOne({ telegramId: ctx.from.id.toString() });

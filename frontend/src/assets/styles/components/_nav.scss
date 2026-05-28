@@ -1,4 +1,4 @@
-// navbar
+
 
 header {
     width: 100%;
@@ -95,14 +95,13 @@ header {
                     border: 0.5px solid var(--color-border);
                     border-radius: 0.75rem;
                     padding: 0.5rem;
-                    min-width: 12rem; /* Increased slightly for the button */
+                    min-width: 12rem;                     
                     display: flex;
                     flex-direction: column;
                     z-index: 999;
                     align-items: flex-start;
                     white-space: nowrap;
-                    /* Removed opacity: 0 and pointer-events: none so Framer Motion can work */
-
+                    
                     a {
                         width: 100%;
                         display: block;
@@ -121,7 +120,7 @@ header {
                     }
 
                     .container {
-                        width: 100%; /* Important: ensures button and divider take full width */
+                        width: 100%;
                         padding: 0 0.5rem 0.5rem 0.5rem;
 
                         .divider {
@@ -132,7 +131,7 @@ header {
                                 255,
                                 255,
                                 0.1
-                            ); /* Made slightly more visible */
+                            ); 
                             margin: 0.75rem 0;
                         }
 
@@ -140,7 +139,7 @@ header {
                             width: 100%;
                             display: inline-block;
                             padding: 0.6rem 1rem;
-                            font-size: 1rem; /* Adjusted for mobile dropdown scale */
+                            font-size: 1rem;
                             border-radius: 8px;
                             border: none;
                             cursor: pointer;

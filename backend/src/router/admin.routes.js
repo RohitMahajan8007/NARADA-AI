@@ -36,9 +36,9 @@ router.put("/settings", updateSettings);
 router.get("/email-templates", getEmailTemplates);
 router.put("/email-templates", manageEmailTemplates);
 router.get("/email-templates/:key", async (req, res) => {
-  // Return single template by key - handled by frontend for editing
+  
   const { getEmailTemplates: gET } = await import('../controllers/admin.controller.js');
-  // Find in default list via a workaround - re-use getEmailTemplates and filter
+  
   res.status(200).json({ success: true, message: 'use /email-templates list' });
 });
 router.put("/email-templates/:key", manageEmailTemplates);

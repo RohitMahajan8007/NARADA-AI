@@ -49,9 +49,11 @@ export const chatWithAI = async (message, context) => {
     return "Sorry, I'm having trouble thinking right now. Please check if your Gemini API key is valid.";
   }        
 };
+
+
 export const analyzeSeoData = async (url, semData) => {
   try {
-    const model = await getAIModel(); // Using dynamic key
+    const model = await getAIModel(); 
     const prompt = `
       You are an elite SEO & Growth Marketing Expert. Analyze this Semrush data for the website: ${url}
       

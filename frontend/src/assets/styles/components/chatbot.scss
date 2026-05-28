@@ -1,4 +1,4 @@
-/* Chatbot.scss - Narada AI Neural Interface Style */
+
 
 .narada-chatbot-wrapper {
     position: fixed;
@@ -7,12 +7,11 @@
     z-index: 1000;
     font-family: "Inter", sans-serif;
 
-    // --- TRIGGER BUTTON ---
-    .chatbot-trigger {
+        .chatbot-trigger {
         width: 64px;
         height: 64px;
         border-radius: 20px;
-        background: var(--color-accent); // #fa3a3b
+        background: var(--color-accent);
         color: white;
         border: none;
         cursor: pointer;
@@ -44,7 +43,6 @@
         }
     }
 
-    // --- CHAT WINDOW ---
     .chatbot-window {
         position: absolute;
         bottom: 84px;
@@ -65,7 +63,7 @@
             right: -10px;
         }
 
-        /* HEADER */
+        
         .chat-header {
             padding: 18px 24px;
             border-bottom: 1px solid var(--color-border);
@@ -99,7 +97,7 @@
             }
         }
 
-        /* BODY */
+        
         .chat-body {
             flex: 1;
             overflow-y: auto;
@@ -183,7 +181,7 @@
             }
         }
 
-        /* FOOTER */
+        
         .chat-footer {
             padding: 20px;
             border-top: 1px solid var(--color-border);

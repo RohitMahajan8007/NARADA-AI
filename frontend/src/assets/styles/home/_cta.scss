@@ -1,6 +1,3 @@
-/* ==========================================================================
-   CONTACT / CTA SECTION
-   ========================================================================== */
 
 .contact {
     width: 100%;
@@ -9,7 +6,7 @@
     margin-bottom: 2rem;
     padding: 2rem 0;
 
-    // Section Heading
+    
     h2 {
         text-align: center;
         margin-bottom: 2rem;
@@ -19,7 +16,7 @@
         }
     }
 
-    // The Main CTA Card
+    
     .call {
         width: 90%;
         max-width: 80rem;
@@ -27,11 +24,11 @@
         margin: 0 auto;
         border-radius: 1rem;
         display: flex;
-        flex-direction: column-reverse; // Mobile: Image on top, text below
+        flex-direction: column-reverse; 
         align-items: stretch;
         justify-content: center;
         box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
-        overflow: hidden; // Keeps image inside border radius
+        overflow: hidden; 
 
         .left {
             width: 100%;
@@ -68,7 +65,7 @@
             button {
                 padding: 0.85rem 1.5rem;
                 font-size: 1.25rem;
-                width: 100%; // Mobile: Full width button
+                width: 100%; 
                 border-radius: 50px;
                 border: none;
                 cursor: pointer;
@@ -78,7 +75,6 @@
                 background-color: #fa3a3b;
                 color: white;
 
-                // Your exact shadow styles
                 box-shadow:
                     rgba(255, 60, 60, 0.3) 0px 0px 72px 0px,
                     rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset,
@@ -100,7 +96,7 @@
         }
 
         .right {
-            height: 300px; // Mobile image height
+            height: 300px; 
             width: 100%;
             overflow: hidden;
             position: relative;
@@ -112,7 +108,7 @@
                 object-position: center;
                 display: block;
 
-                // Mobile Mask: Fades out at the bottom to blend with text
+                
                 -webkit-mask-image: linear-gradient(
                     to bottom,
                     black 70%,
@@ -128,7 +124,6 @@
     }
 }
 
-/* DESKTOP STYLES (786px and up) */
 @media screen and (min-width: 786px) {
     .contact {
         min-height: 80vh;
@@ -147,11 +142,11 @@
         } */
 
         .call {
-            flex-direction: row; // Side-by-side layout
+            flex-direction: row;
             width: 90%;
             height: auto;
-            min-height: 500px; // Ensures card is tall enough
-            align-items: stretch; // Forces left and right to same height
+            min-height: 500px; 
+            align-items: stretch; 
 
             .left {
                 width: 60%;
@@ -168,21 +163,21 @@
                 }
 
                 button {
-                    max-width: 250px; // Desktop: Fixed width button
+                    max-width: 250px; 
                 }
             }
 
             .right {
                 width: 40%;
-                height: auto; // Stretches to match left box height
+                height: auto; 
 
                 img {
-                    // Fix: Ensure image fills the whole container with no black spaces
+                    
                     position: absolute;
                     top: 0;
                     left: 0;
 
-                    // Desktop Mask: Fades to the left to blend into the text area
+                    
                     -webkit-mask-image: linear-gradient(
                         to left,
                         black 75%,
@@ -199,7 +194,6 @@
     }
 }
 
-/* LARGE DESKTOP (1200px and up) */
 @media screen and (min-width: 1200px) {
     .contact {
         .call {

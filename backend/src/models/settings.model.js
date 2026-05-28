@@ -14,7 +14,7 @@ const settingsSchema = new mongoose.Schema(
     upiPayeeName: String,
     planLimits: mongoose.Schema.Types.Mixed,
     pricing: mongoose.Schema.Types.Mixed,
-    // Allows any other fields we might need
+    
   },
   {
     timestamps: true,

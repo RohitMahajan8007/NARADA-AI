@@ -6,12 +6,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; // Text stays at the top
+    justify-content: flex-start; 
     position: relative;
     overflow-x: hidden;
-    padding: 0; // Removed padding here so Spline can go edge-to-edge
+    padding: 0; 
 
-    // 1. Circle Spotlight (Original Logic)
     .spotlight-bg {
         --size: 200px;
         --x: 50%;
@@ -38,10 +37,9 @@
         );
     }
 
-    // 2. Spline Container (100% Width)
     .spline-container {
         position: relative;
-        width: 100%; // Spans full width
+        width: 100%;
         height: 600px;
         z-index: 5;
         overflow: hidden;
@@ -65,11 +63,11 @@
         }
     }
 
-    // 3. Hero Content (Side padding added back here specifically)
+  
     .hero-content {
         width: 100%;
         max-width: 80rem;
-        padding: 6rem 1.5rem 0 1.5rem; // Padding-top moves text up
+        padding: 6rem 1.5rem 0 1.5rem; 
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -249,25 +247,25 @@
             position: relative;
             width: 100%;
 
-            /* 1. Set the height to exactly where you want the cut (half-body) */
+           
             height: 800px;
 
-            /* 2. Hide the bottom half */
+           
             overflow: hidden;
 
-            /* 3. Pull it up closer to your text */
+           
             margin-top: -16rem;
 
             z-index: 5;
-            /* pointer-events: none; */
+           
 
             .spline-wrapper {
                 width: 100%;
-                height: 600px; /* Keep this taller than the container */
+                height: 600px;
                 display: flex;
                 justify-content: center;
 
-                /* 4. This mask creates the 'Half-Robot' fade effect */
+                
                 -webkit-mask-image: linear-gradient(
                     to bottom,
                     black 50%,

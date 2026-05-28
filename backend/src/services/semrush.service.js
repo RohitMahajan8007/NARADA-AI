@@ -49,7 +49,7 @@ export const fetchSemrushData = async (url) => {
         const domain = new URL(url).hostname.replace('www.', '');
         const requestId = `req_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
         
-        // Parallel RPC calls with the methods found in the working curl requests
+       
         const [backlinksRes, organicRes, aiRes, positionsRes] = await Promise.all([
             callRpc('backlinks.Summary', { searchItem: domain, searchType: 'domain' }, requestId),
             callRpc('organic.Summary', { searchItem: domain, searchType: 'domain', dateType: 'daily' }, requestId),
@@ -68,7 +68,7 @@ export const fetchSemrushData = async (url) => {
         const aiData = aiRes.result || {};
         const positionsData = positionsRes.result || [];
         
-        // Calculate Worldwide totals by summing all databases
+       
         const organicData = Array.isArray(organicDataRaw) 
             ? organicDataRaw.reduce((acc, curr) => ({
                 traffic: (acc.traffic || 0) + (curr.traffic || curr.organicTraffic || 0),
@@ -81,10 +81,10 @@ export const fetchSemrushData = async (url) => {
                 trafficCost: organicDataRaw.costs || organicDataRaw.organicTrafficCost || organicDataRaw.trafficCost || 0
             };
 
-        // Format AI insights into a readable string for Gemini
+       
         const aiSummary = aiData ? `AI Visibility: ${aiData.ai_visibility}%, Cited Pages: ${aiData.cited_pages}, Mentions: ${aiData.mention_stats?.length || 0}` : "";
         
-        // Extract keywords - handle both array and object formats
+       
         const keywordsList = Array.isArray(positionsData) ? positionsData : (positionsData.list || positionsData.positions || backlinksData.anchors || []);
 
         return {

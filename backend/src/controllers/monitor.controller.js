@@ -32,10 +32,10 @@ export const createMonitor = async (req, res) => {
       maintenanceUntil
     });
 
-    // Run initial check immediately without waiting for cron
+   
     performSingleCheck(monitor).catch(err => console.error("Initial check error:", err.message));
 
-    // Also check domain expiry immediately
+   
     checkDomainExpiry(monitor.url).then(async (domainData) => {
       if (domainData) {
         await Monitor.updateOne(
@@ -110,13 +110,12 @@ export const toggleMonitor = async (req, res) => {
   }
 };
 
-/* ── Manual SSL refresh ── */
 export const refreshSSL = async (req, res) => {
   try {
     const monitor = await Monitor.findOne({ _id: req.params.id, user: req.user._id });
     if (!monitor) return res.status(404).json({ message: "Monitor not found" });
 
-    // Inline TLS check (same logic as job)
+    
     const { default: tls } = await import("tls");
     const result = await new Promise((resolve) => {
       try {
@@ -157,7 +156,7 @@ export const refreshSSL = async (req, res) => {
   }
 };
 
-/* ── Immediate PDF Report Download ── */
+
 export const downloadReport = async (req, res) => {
   try {
     const { generateWeeklyReport } = await import("../services/report.service.js");
@@ -181,7 +180,7 @@ export const downloadReport = async (req, res) => {
 
 export const setMaintenance = async (req, res) => {
   try {
-    const { duration } = req.body; // duration in minutes
+    const { duration } = req.body;
     const monitor = await Monitor.findOne({ _id: req.params.id, user: req.user._id });
     if (!monitor) return res.status(404).json({ message: "Monitor not found" });
 

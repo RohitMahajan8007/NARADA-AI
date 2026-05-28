@@ -16,7 +16,6 @@ import { getAudit, runAudit } from "./controllers/audit.controller.js";
 
 const app = express();
 
-// 1. CORS - MUST BE FIRST
 app.use(cors({
   origin: true,
   credentials: true,
@@ -24,7 +23,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
 }));
 
-// Manual handle for extra safety
+
 app.use((req, res, next) => {
   const origin = req.headers.origin;
   res.setHeader('Access-Control-Allow-Origin', origin || '*');
@@ -49,7 +48,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/seo", seoRoutes);
 
-// Public Status Route (No Auth Required)
+
 app.get("/api/public/status/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
@@ -60,7 +59,7 @@ app.get("/api/public/status/:userId", async (req, res) => {
   }
 });
 
-// Individual Public Monitor Route
+
 app.get("/api/public/monitor/:monitorId", async (req, res) => {
   try {
     const { monitorId } = req.params;
@@ -74,7 +73,7 @@ app.get("/api/public/monitor/:monitorId", async (req, res) => {
   }
 });
 
-// Inline logs route for monitor detail page
+
 app.get("/api/logs/:monitorId", protect, async (req, res) => {
   try {
     const { monitorId } = req.params;
@@ -88,7 +87,7 @@ app.get("/api/logs/:monitorId", protect, async (req, res) => {
   }
 });
 
-// Real audit routes using Google PageSpeed Insights
+
 app.get("/api/audit/:monitorId", protect, getAudit);
 app.post("/api/audit/:monitorId", protect, runAudit);
 

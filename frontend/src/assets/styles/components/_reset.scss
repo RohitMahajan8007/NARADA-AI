@@ -18,7 +18,7 @@ body {
     -webkit-user-select: none;
 }
 
-// scrollbar starts 🎐
+
 
 * {
     -webkit-tap-highlight-color: transparent;
@@ -48,9 +48,6 @@ body {
     scrollbar-color: var(--color-scrollbar) transparent;
 }
 
-// scrollbar ends 🎐
-
-// smooth scrolling starts 🎐
 
 * {
     -webkit-tap-highlight-color: transparent;
@@ -65,4 +62,3 @@ html {
     scroll-margin-top: 80px;
 }
 
-// smooth scrolling ends 🎐

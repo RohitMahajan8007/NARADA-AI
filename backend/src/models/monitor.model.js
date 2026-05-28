@@ -42,7 +42,7 @@ const monitorSchema = new mongoose.Schema(
       type: Number,
       default: 100,
     },
-    // SSL Certificate info
+    
     sslExpiry: {
       type: Date,
       default: null,
@@ -62,7 +62,7 @@ const monitorSchema = new mongoose.Schema(
       type: Number,
       default: null,
     },
-    // Last ping metrics
+    
     lastResponseTime: {
       type: Number,
       default: null,
@@ -71,7 +71,7 @@ const monitorSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
-    // New Advanced Features
+    
     keyword: {
       type: String,
       default: null,

@@ -3,11 +3,13 @@ import Audit from "../models/audit.model.js";
 
 const PAGESPEED_API = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 
-// Helper to extract numeric score (0-100) from Lighthouse category
+
 const score = (cat) => Math.round((cat?.score || 0) * 100);
 
-// Helper to extract metric value in ms
+
 const ms = (audit) => Math.round((audit?.numericValue || 0));
+
+
 
 export const getAudit = async (req, res) => {
   try {
@@ -16,7 +18,7 @@ export const getAudit = async (req, res) => {
 
     const audit = await Audit.findOne({ monitor: monitor._id }).sort("-createdAt");
     
-    // Check if audit is fresh (less than 5 days old)
+   
     if (audit) {
       const now = new Date();
       const lastFetched = new Date(audit.updatedAt || audit.createdAt);
@@ -42,7 +44,7 @@ export const runAudit = async (req, res) => {
     const targetUrl = monitor.url;
     const apiKey = process.env.PAGESPEED_API_KEY || process.env.GOOGLE_API_KEY || "";
 
-    // Call Google PageSpeed Insights v5 API
+    
     const psUrl = new URL(PAGESPEED_API);
     psUrl.searchParams.set("url", targetUrl);
     psUrl.searchParams.set("strategy", "mobile");
@@ -52,7 +54,7 @@ export const runAudit = async (req, res) => {
     psUrl.searchParams.set("category", "seo");
     if (apiKey) psUrl.searchParams.set("key", apiKey);
 
-    // Build URL with multiple category params (searchParams.set overwrites, so build manually)
+   
     const categories = ["performance", "accessibility", "best-practices", "seo"];
     const catParams = categories.map(c => `category=${encodeURIComponent(c)}`).join("&");
     const finalUrl = `${PAGESPEED_API}?url=${encodeURIComponent(targetUrl)}&strategy=mobile&${catParams}${apiKey ? `&key=${apiKey}` : ""}`;
@@ -81,7 +83,7 @@ export const runAudit = async (req, res) => {
     const ttfb = ms(audits["server-response-time"]);
     const si   = ms(audits["speed-index"]);
 
-    // Build a concise AI-style analysis from Lighthouse data
+    
     const opportunities = Object.values(audits)
       .filter(a => a.details?.type === "opportunity" && a.score !== null && a.score < 0.9)
       .slice(0, 5)
@@ -111,7 +113,7 @@ export const runAudit = async (req, res) => {
       aiAnalysis += `### ⚠️ Diagnostics\n${diagnostics}\n`;
     }
 
-    // Save to DB (upsert latest audit for this monitor)
+    
     const audit = await Audit.findOneAndUpdate(
       { monitor: monitor._id },
       {
