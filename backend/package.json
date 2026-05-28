@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "npx nodemon server.js"
+    "dev": "npx nodemon server.js",
+    "build": "cd ../frontend && npm install && npm run build && cd ../backend && (if exist public rmdir /s /q public) && xcopy /E /I /Y .\\..\\frontend\\dist public"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

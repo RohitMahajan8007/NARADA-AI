@@ -1,15 +1,16 @@
 services:
-  # Backend Web Service
+  # Single Web Service - Backend serves Frontend too
   - type: web
-    name: narada-backend
+    name: narada-ai
     runtime: node
-    buildCommand: npm install
-    startCommand: node server.js
+    rootDir: .
+    buildCommand: cd frontend && npm install && npm run build && cd .. && mkdir -p backend/public && cp -r frontend/dist/. backend/public/
+    startCommand: node backend/server.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 3500
+        value: 10000
       - key: MONGO_URI
         sync: false
       - key: JWT_SECRET
@@ -34,22 +35,5 @@ services:
         sync: false
       - key: SEMRUSH_USER_ID
         sync: false
-    rootDir: backend
-
-  # Frontend Static Site
-  - type: static
-    name: narada-frontend
-    runtime: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: narada-backend
-          property: host
-    rootDir: frontend
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false

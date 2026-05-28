@@ -2,6 +2,9 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
+import { fileURLToPath } from "url";
+import fs from "fs";
 import passport from "./config/passport.js";
 import authRoutes from "./router/auth.routes.js";
 import monitorRoutes from "./router/monitor.routes.js";
@@ -15,6 +18,9 @@ import Monitor from "./models/monitor.model.js";
 import { getAudit, runAudit } from "./controllers/audit.controller.js";
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(cors({
   origin: true,
@@ -40,6 +46,10 @@ app.use((req, res, next) => {
 app.use(passport.initialize());
 app.use(express.json());
 app.use(cookieParser());
+
+// Serve frontend build files from public folder
+const publicPath = path.join(__dirname, "../public");
+app.use(express.static(publicPath));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/monitors", monitorRoutes);
@@ -91,8 +101,14 @@ app.get("/api/logs/:monitorId", protect, async (req, res) => {
 app.get("/api/audit/:monitorId", protect, getAudit);
 app.post("/api/audit/:monitorId", protect, runAudit);
 
-app.get("/", (req, res) => {
-  res.send("Web Monitor SaaS API is running...");
+// Catch-all route: serve frontend for any non-API route (React Router SPA support)
+app.get("*", (req, res) => {
+  const indexPath = path.join(__dirname, "../public", "index.html");
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(200).json({ message: "NARDA AI Backend is running. Frontend not built yet." });
+  }
 });
 
 export default app;
