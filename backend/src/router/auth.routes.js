@@ -37,7 +37,10 @@ router.get(
       expiresIn: process.env.JWT_EXPIRES_IN || process.env.JWT_EXPIRE || '7d',
     });
 
-    const frontendUrl = process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? "" : "http://localhost:5173");
+    let frontendUrl = process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? "" : "http://localhost:5173");
+    if (process.env.NODE_ENV === 'production' && frontendUrl.includes('localhost')) {
+      frontendUrl = "";
+    }
     res.redirect(`${frontendUrl}/login?token=${token}`);
   }
 );
