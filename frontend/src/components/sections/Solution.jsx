@@ -61,7 +61,7 @@ const Solution = () => {
   return (
     <section className="solution-section">
       <motion.h2 {...fadeUp}>
-        <span>The Narada Peace of Mind</span>
+        <span>The Web Monitor Peace of Mind</span>
       </motion.h2>
 
       <div className="solution-grid">
@@ -88,7 +88,7 @@ const Solution = () => {
           <div className="content">
             <h3>Proactive Shield</h3>
             <p>
-              Narada watches every millisecond. If a pulse weakens, you're the
+              Web Monitor watches every millisecond. If a pulse weakens, you're the
               first to know—not the last.
             </p>
           </div>
@@ -166,7 +166,7 @@ const Solution = () => {
           <div className="content">
             <h3>Seamless Growth</h3>
             <p>
-              Scale with confidence. As you grow, Narada scales with you,
+              Scale with confidence. As you grow, Web Monitor scales with you,
               ensuring global stability.
             </p>
           </div>

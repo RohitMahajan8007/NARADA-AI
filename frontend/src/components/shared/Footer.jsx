@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="bento">
           <div className="box1">
             <a href="/" className="rizz">
-              <span className="brand">Narada AI</span>
+              <span className="brand">Web Monitor</span>
               <span className="byline">by Monster Squad</span>
             </a>
             <p>
@@ -96,7 +96,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="bigtext">Narada AI</p>
+      <p className="bigtext">Web Monitor</p>
     </footer>
   );
 };

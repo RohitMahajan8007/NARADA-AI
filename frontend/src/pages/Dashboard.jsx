@@ -171,7 +171,7 @@ const Dashboard = () => {
       link.href = url;
       link.setAttribute(
         "download",
-        `Narada-AI-Report-${new Date().toISOString().split("T")[0]}.pdf`,
+        `Web-Monitor-Report-${new Date().toISOString().split("T")[0]}.pdf`,
       );
       document.body.appendChild(link);
       link.click();

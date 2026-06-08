@@ -36,7 +36,7 @@ const Contact = () => {
             transition={{ ...fadeUp.transition, delay: 0.1 }}
           >
             Let’s turn your monitoring into proactive protection that secures
-            your revenue and builds user trust. Deploy Narada today and never be
+            your revenue and builds user trust. Deploy Web Monitor today and never be
             surprised by an outage again.
           </motion.p>
 
@@ -59,7 +59,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <img src="/assets/img/cta.jpg" alt="Narada AI" />
+          <img src="/assets/img/cta.jpg" alt="Web Monitor" />
         </motion.div>
       </div>
     </section>

@@ -60,7 +60,7 @@ const AppLayout = () => {
           <Activity size={18} color="#fff" />
         </div>
         <span className="al-logo-text">
-          Narada <span>AI</span>
+          Web <span>Monitor</span>
         </span>
       </Link>
 
@@ -144,7 +144,7 @@ const AppLayout = () => {
           >
             <Menu size={22} />
           </button>
-          <span className="mobile-title">Narada AI</span>
+          <span className="mobile-title">Web Monitor</span>
           <div className="al-topbar-user">
             {user?.name?.[0]?.toUpperCase() || "U"}
           </div>

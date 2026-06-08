@@ -62,7 +62,7 @@ const Workflow = () => {
               <h3>Connect Your Assets</h3>
               <p>
                 Add your website URLs or API endpoints — simply paste the link
-                and Narada AI handles the rest.
+                and Web Monitor handles the rest.
               </p>
             </div>
           </motion.div>
@@ -101,7 +101,7 @@ const Workflow = () => {
             <div className="bottom">
               <h3>AI Failure Analysis</h3>
               <p>
-                Narada AI identifies the root cause and captures technical
+                Web Monitor identifies the root cause and captures technical
                 headers immediately upon failure.
               </p>
             </div>

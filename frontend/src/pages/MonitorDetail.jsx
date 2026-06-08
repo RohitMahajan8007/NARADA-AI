@@ -418,7 +418,7 @@ const MonitorDetail = () => {
             >
               <div className="md-seo-header">
                 <h2>
-                  <Sparkles size={20} color="#fa3a3b" /> Narada SEO Intelligence
+                  <Sparkles size={20} color="#fa3a3b" /> Web Monitor SEO Intelligence
                 </h2>
                 <button
                   className="primary-btn"

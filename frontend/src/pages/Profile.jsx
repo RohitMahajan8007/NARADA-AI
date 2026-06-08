@@ -194,7 +194,7 @@ const Profile = () => {
                       onChange={(e) => setTelegramId(e.target.value)}
                     />
                     <p className="hint">
-                      Connect with <strong>@NaradaAIBot</strong> and send{" "}
+                      Connect with <strong>@WebMonitorBot</strong> and send{" "}
                       <code>/start</code> to receive your Chat ID.
                     </p>
                   </div>

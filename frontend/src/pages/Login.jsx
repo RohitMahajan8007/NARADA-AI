@@ -181,7 +181,7 @@ const Login = () => {
           <Link to="/" className="brand-header">
             <Activity className="brand-logo" size={28} />
             <span>
-              Narada <span className="red-text">AI</span>
+              Web <span className="red-text">Monitor</span>
             </span>
           </Link>
 

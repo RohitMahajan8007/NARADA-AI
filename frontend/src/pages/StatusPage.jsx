@@ -60,7 +60,7 @@ const StatusPage = () => {
         >
           <Activity size={40} color="#fa3a3b" />
         </motion.div>
-        <p>Connecting to Narada Status Network...</p>
+        <p>Connecting to Web Monitor Status Network...</p>
       </div>
     );
   }
@@ -79,7 +79,7 @@ const StatusPage = () => {
             <div className="brand-logo">
               <Activity size={24} color="#fa3a3b" />
               <span>
-                NARADA <span>AI</span>
+                WEB <span>MONITOR</span>
               </span>
             </div>
             <div className="service-info">
@@ -141,7 +141,7 @@ const StatusPage = () => {
 
           <footer className="ps-footer">
             <p>
-              Infrastructure Surveillance by <strong>Narada AI</strong>
+              Infrastructure Surveillance by <strong>Web Monitor</strong>
             </p>
           </footer>
         </motion.div>
@@ -164,7 +164,7 @@ const StatusPage = () => {
           <div className="ps-logo">
             <Activity color="#fa3a3b" size={32} />
             <span>
-              Narada AI <span>Status</span>
+              Web Monitor <span>Status</span>
             </span>
           </div>
 
@@ -233,7 +233,7 @@ const StatusPage = () => {
 
         <footer className="ps-footer">
           <p>
-            Powered by <strong>Narada AI</strong> · Secure Global Monitoring
+            Powered by <strong>Web Monitor</strong> · Secure Global Monitoring
           </p>
         </footer>
       </motion.div>

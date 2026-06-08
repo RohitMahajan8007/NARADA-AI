@@ -102,12 +102,16 @@ app.get("/api/audit/:monitorId", protect, getAudit);
 app.post("/api/audit/:monitorId", protect, runAudit);
 
 // Catch-all route: serve frontend for any non-API route (React Router SPA support)
-app.get("*", (req, res) => {
+app.get("*", (req, res, next) => {
+  // If the request is for a static asset or contains a file extension, skip catch-all
+  if (req.path.includes(".") || req.path.startsWith("/assets/")) {
+    return next();
+  }
   const indexPath = path.join(__dirname, "../public", "index.html");
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
   } else {
-    res.status(200).json({ message: "NARDA AI Backend is running. Frontend not built yet." });
+    res.status(200).json({ message: "Web Monitor Backend is running. Frontend not built yet." });
   }
 });
 

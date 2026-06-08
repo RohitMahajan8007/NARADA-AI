@@ -3,24 +3,24 @@ import { motion, AnimatePresence } from "motion/react";
 
 const faqs = [
   {
-    question: "What is Narada AI?",
+    question: "What is Web Monitor?",
     answer:
-      "Narada AI monitors your website 24/7 and alerts you before downtime impacts your users—so you stay one step ahead, always.",
+      "Web Monitor monitors your website 24/7 and alerts you before downtime impacts your users—so you stay one step ahead, always.",
   },
   {
-    question: "How is Narada AI different from other monitoring tools?",
+    question: "How is Web Monitor different from other monitoring tools?",
     answer:
-      "Most tools tell you after your site is down.Narada AI predicts issues early and notifies you before downtime even begins.",
+      "Most tools tell you after your site is down. Web Monitor predicts issues early and notifies you before downtime even begins.",
   },
   {
-    question: "How does Narada AI predict downtime?",
+    question: "How does Web Monitor predict downtime?",
     answer:
       "We use intelligent monitoring and pattern analysis to detect unusual behavior, performance drops, and early warning signals—before they become critical failures.",
   },
   {
     question: "Do I need technical knowledge to use it?",
     answer:
-      "Not at all. Narada AI is built for simplicity—just connect your site and we handle the rest.",
+      "Not at all. Web Monitor is built for simplicity—just connect your site and we handle the rest.",
   },
   {
     question: "How will I receive alerts?",
@@ -28,19 +28,19 @@ const faqs = [
       "You’ll get instant alerts via email, SMS, or integrations like Slack—so you can act immediately.",
   },
   // {
-  //   question: "Can Narada AI monitor multiple websites?",
+  //   question: "Can Web Monitor monitor multiple websites?",
   //   answer:
   //     "Yes, you can monitor multiple domains from a single dashboard with ease.",
   // },
   // {
   //   question: "Will it affect my website performance?",
   //   answer:
-  //     "No. Narada AI runs lightweight checks that do not impact your site’s speed or user experience.",
+  //     "No. Web Monitor runs lightweight checks that do not impact your site’s speed or user experience.",
   // },
   // {
-  //   question: "Is Narada AI suitable for small businesses?",
+  //   question: "Is Web Monitor suitable for small businesses?",
   //   answer:
-  //     "Absolutely. Whether you're a startup or scaling business, Narada AI helps you avoid costly downtime.",
+  //     "Absolutely. Whether you're a startup or scaling business, Web Monitor helps you avoid costly downtime.",
   // },
 ];
 

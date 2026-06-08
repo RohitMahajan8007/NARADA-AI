@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="left">
           <div className="logo">
             <a href="/">
-              <span className="brand">Narada AI</span>
+              <span className="brand">Web Monitor</span>
               <span className="byline">by Monster</span>
             </a>
           </div>

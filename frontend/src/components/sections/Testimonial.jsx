@@ -7,7 +7,7 @@ const testimonialData = {
       id: 1,
       name: "Laura Sydney",
       role: "Indie Hacker",
-      text: "Narada caught a 503 error on my portfolio before I even finished my coffee. Essential tool.",
+      text: "Web Monitor caught a 503 error on my portfolio before I even finished my coffee. Essential tool.",
       img: "https://images.unsplash.com/photo-1516522973472-f009f23bba59?q=80&w=800",
     },
     {
@@ -67,7 +67,7 @@ const testimonialData = {
       id: 11,
       name: "Global Ops",
       role: "Systems VP",
-      text: "Narada is now our primary source of truth for global latency tracking and system health.",
+      text: "Web Monitor is now our primary source of truth for global latency tracking and system health.",
       img: "https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?q=80&w=800",
     },
   ],

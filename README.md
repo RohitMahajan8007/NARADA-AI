@@ -1,4 +1,4 @@
-# 🚀 Narada AI – Smart Website Monitoring Platform
+# 🚀 Web Monitor – Smart Website Monitoring Platform
 
 **Tagline:**  
 *Because downtime should never surprise you.*
@@ -7,7 +7,7 @@
 
 ## 🧠 Product Description
 
-Narada AI is a real-time website and API monitoring platform that proactively detects downtime, latency spikes, and failures before users are affected. It combines DevOps monitoring with AI-powered incident analysis to deliver actionable alerts, detailed logs, and intelligent summaries.
+Web Monitor is a real-time website and API monitoring platform that proactively detects downtime, latency spikes, and failures before users are affected. It combines DevOps monitoring with AI-powered incident analysis to deliver actionable alerts, detailed logs, and intelligent summaries.
 
 ---
 
@@ -131,7 +131,7 @@ frontend/
 
 To build a world-class monitoring product that wins hackathons, you need to balance **functional utility** with **visual storytelling**.
 
-Here are the **8 essential pages** you need to build for Narada AI, categorized by their purpose.
+Here are the **8 essential pages** you need to build for Web Monitor, categorized by their purpose.
 
 ---
 
@@ -142,7 +142,7 @@ Here are the **8 essential pages** you need to build for Narada AI, categorized 
 **1. Landing Page (Home)**
 
 * **Purpose:** High-level overview, "Problem vs. Solution," and the AI "hook."
-* **Killer Feature:** Use your **Narada Red** for a "Live Incident Demo" section showing a site going down and the AI explaining why.
+* **Killer Feature:** Use your **Web Monitor Red** for a "Live Incident Demo" section showing a site going down and the AI explaining why.
 
 **2. Authentication (Login / Register)**
 
@@ -159,7 +159,7 @@ Here are the **8 essential pages** you need to build for Narada AI, categorized 
 
 * **Purpose:** A "bird's-eye view" of all monitored assets.
 * **Content:** Large stat cards showing: Total Monitors, Global Uptime %, Active Incidents, and Average Response Time.
-* **Visual Strategy:** Use a "Grid" of small, pulsing status indicators (Green for up, Narada Red for down).
+* **Visual Strategy:** Use a "Grid" of small, pulsing status indicators (Green for up, Web Monitor Red for down).
 
 **4. Monitors List (Management)**
 
@@ -172,7 +172,7 @@ Here are the **8 essential pages** you need to build for Narada AI, categorized 
 * **Purpose:** Detailed analytics for **one specific** website or API.
 * **Content:** 
   * **Charts:** Response time over the last 24 hours (using Recharts).
-  * **AI Insight Section:** This is the "Best of the Best" part. A specific box where Narada AI summarizes recent failures.
+  * **AI Insight Section:** This is the "Best of the Best" part. A specific box where Web Monitor summarizes recent failures.
   * **Timeline:** A vertical list of every time the site went down/up.
 
 ---
@@ -199,7 +199,7 @@ Here are the **8 essential pages** you need to build for Narada AI, categorized 
 
 **8. Public Status Page**
 
-* **Purpose:** A "Shareable" link (e.g., `narada.ai/status/my-website`) that the user can show to *their* customers.
+* **Purpose:** A "Shareable" link (e.g., `webmonitor.ai/status/my-website`) that the user can show to *their* customers.
 * **Why it wins:** It shows you've thought about the end-user. It’s a classic feature of pro tools like BetterStack or Statuspage.io.
 
 ---
@@ -294,4 +294,4 @@ Here are the **8 essential pages** you need to build for Narada AI, categorized 
 
 ## 💀 Killer Pitch Line
 
-> “While others react to downtime, Narada predicts and explains it before users even notice.”
+> “While others react to downtime, Web Monitor predicts and explains it before users even notice.”

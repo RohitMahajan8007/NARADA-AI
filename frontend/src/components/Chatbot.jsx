@@ -9,7 +9,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       role: "bot",
-      text: '**Uplink Established.** I am Narada AI. I can analyze your infrastructure telemetry. Try asking: *"Is my node production-api online?"*',
+      text: '**Uplink Established.** I am Web Monitor AI. I can analyze your infrastructure telemetry. Try asking: *"Is my node production-api online?"*',
     },
   ]);
   const [input, setInput] = useState("");
@@ -105,7 +105,7 @@ const Chatbot = () => {
               <div className="header-left">
                 <div className="status-dot"></div>
                 <Sparkles size={16} className="sparkle" />
-                <span>NARADA CORE v1.0</span>
+                <span>WEB MONITOR CORE v1.0</span>
               </div>
               <Terminal size={14} className="terminal-icon" />
             </div>

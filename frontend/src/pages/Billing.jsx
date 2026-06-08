@@ -133,17 +133,17 @@ const Billing = () => {
         setStep("upi");
       } else {
         setUpiDetails({
-          upiString: `upi://pay?pa=demo@upi&pn=NaradaAI&am=${pricingInfo.finalAmount}`,
-          id: "narada@upi",
-          payeeName: "Narada AI Systems",
+          upiString: `upi://pay?pa=demo@upi&pn=WebMonitor&am=${pricingInfo.finalAmount}`,
+          id: "webmonitor@upi",
+          payeeName: "Web Monitor Systems",
         });
         setStep("upi");
       }
     } catch (err) {
       setUpiDetails({
-        upiString: `upi://pay?pa=demo@upi&pn=NaradaAI&am=${pricingInfo.finalAmount}`,
-        id: "narada@upi",
-        payeeName: "Narada AI Systems",
+        upiString: `upi://pay?pa=demo@upi&pn=WebMonitor&am=${pricingInfo.finalAmount}`,
+        id: "webmonitor@upi",
+        payeeName: "Web Monitor Systems",
       });
       setStep("upi");
     }

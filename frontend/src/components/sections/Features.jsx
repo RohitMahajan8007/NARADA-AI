@@ -152,7 +152,7 @@ const WhyChooseUs = () => {
               <h3>Trusted by 10K+ Brands</h3>
               <p className="glass-pill">
                 From independent developers to mission-critical infrastructure,
-                Narada AI is the choice for high-performance systems worldwide.
+                Web Monitor is the choice for high-performance systems worldwide.
               </p>
             </div>
           </motion.div>
@@ -166,7 +166,7 @@ const WhyChooseUs = () => {
             <div className="left">
               <h3>Instant Alerts on Every Channel</h3>
               <p className="glass-pill">
-                Narada AI integrates seamlessly with your existing workflow. Get
+                Web Monitor integrates seamlessly with your existing workflow. Get
                 downtime notifications on Slack, Telegram, Discord, and more in
                 under 2 seconds.
               </p>
@@ -270,7 +270,7 @@ const WhyChooseUs = () => {
 
               <h3>AI Root Cause Analysis</h3>
               <p className="glass-pill">
-                Narada doesn't just detect downtime—it explains it. Get instant
+                Web Monitor doesn't just detect downtime—it explains it. Get instant
                 AI summaries identifying the exact cause and suggested fixes for
                 every incident.
               </p>
