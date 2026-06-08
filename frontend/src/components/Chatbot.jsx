@@ -56,7 +56,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="narada-chatbot-wrapper" style={{ display: 'none' }}>
+    <div className="narada-chatbot-wrapper">
       {/* TRIGGER BUTTON */}
       <button
         onClick={() => setIsOpen(!isOpen)}

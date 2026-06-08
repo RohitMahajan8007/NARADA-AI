@@ -26,7 +26,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleGoogleRedirect = () => {
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3500";
+    const apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
     window.location.href = `${apiUrl}/api/auth/google`;
   };
 
